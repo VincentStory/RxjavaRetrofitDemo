@@ -7,7 +7,7 @@
 
 2.接口返回错误统一处理，也可以特殊处理
 
-3.使用AutoDispose实现任务生命周期管理，相比Rxliferecycle更简洁，具体优势可参考文章：https://blog.danlew.net/2017/08/02/why-not-rxlifecycle/
+3.使用AutoDispose实现任务生命周期管理，为啥要弃用RxLiferecycle，可参考文章：https://blog.danlew.net/2017/08/02/why-not-rxlifecycle/
 
 4.支持完整Respone解析，也支持Data单独解析，不用写过多重复代码
 
