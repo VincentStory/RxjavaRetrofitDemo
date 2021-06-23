@@ -5,13 +5,13 @@ import android.util.Log;
 import android.widget.Toast;
 
 import com.example.rxjava.utils.ContextUtil;
-import com.example.rxjava.http.QCodeException;
+import com.example.rxjava.http.MCodeException;
 
 import java.net.UnknownHostException;
 
 import io.reactivex.subscribers.DisposableSubscriber;
 
-public abstract class QSubscriber<T> extends DisposableSubscriber<T> {
+public abstract class MSubscriber<T> extends DisposableSubscriber<T> {
     private String TAG = getClass().getSimpleName();
 
 
@@ -33,8 +33,8 @@ public abstract class QSubscriber<T> extends DisposableSubscriber<T> {
 
     @Override
     public void onError(Throwable t) {
-//        if (t instanceof QCodeException) {
-//            onCodeException((QCodeException) t);
+//        if (t instanceof MCodeException) {
+//            onCodeException((MCodeException) t);
 //        } else {
 //            onThrowable(t);
 //        }
@@ -42,7 +42,7 @@ public abstract class QSubscriber<T> extends DisposableSubscriber<T> {
     }
 
 
-    protected void onThrowable(QCodeException t) {
+    protected void onThrowable(MCodeException t) {
         Log.i(TAG, t.getCode() + t.getMessage());
         Toast.makeText(ContextUtil.getContext(),t.getMessage(),Toast.LENGTH_LONG).show();
     }

@@ -7,8 +7,8 @@ import android.util.Log;
 import android.widget.TextView;
 
 import com.example.rxjava.bean.ResponseBean;
-import com.example.rxjava.rxhttp.QDialogSubscriber;
-import com.example.rxjava.rxhttp.QSchedulers;
+import com.example.rxjava.rxhttp.MDialogSubscriber;
+import com.example.rxjava.rxhttp.MSchedulers;
 import com.example.rxjava.rxhttp.RequestClicent;
 import com.example.rxjava.utils.AppManager;
 import com.uber.autodispose.AutoDispose;
@@ -52,9 +52,9 @@ public class MainActivity extends AppCompatActivity {
                 .params("ts","1623998700")
                 .params("sign","dbeff7cd5f21a97ffef2648aff33a8a1")
                 .getDefaultService().get(url, getParams())
-                .compose(QSchedulers.composeThread())
+                .compose(MSchedulers.composeThread())
                 .as(AutoDispose.autoDisposable(AndroidLifecycleScopeProvider.from(this)))
-                .subscribe(new QDialogSubscriber<ResponseBean>(true, true) {
+                .subscribe(new MDialogSubscriber<ResponseBean>(true, true) {
                     @Override
                     protected void onSuccess(ResponseBean response) {
                         Log.i("data==", response.getData().toString());

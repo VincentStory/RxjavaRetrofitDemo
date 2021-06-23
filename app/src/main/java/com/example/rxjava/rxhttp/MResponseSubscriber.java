@@ -3,8 +3,8 @@ package com.example.rxjava.rxhttp;
 
 import android.util.Log;
 
+import com.example.rxjava.http.MCodeException;
 import com.example.rxjava.utils.JSONUtils;
-import com.example.rxjava.http.QCodeException;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -15,7 +15,7 @@ import java.lang.reflect.Type;
 import retrofit2.Response;
 
 
-public abstract class QResponseSubscriber<R> extends QSubscriber<Response<String>> {
+public abstract class MResponseSubscriber<R> extends MSubscriber<Response<String>> {
 
     protected abstract void onSuccess(R response);
 
@@ -25,7 +25,7 @@ public abstract class QResponseSubscriber<R> extends QSubscriber<Response<String
     protected boolean isResponseBean = false;
 
 
-    public QResponseSubscriber() {
+    public MResponseSubscriber() {
         try {
             Type[] types = ((ParameterizedType) getClass().getGenericSuperclass()).getActualTypeArguments();
             clazz = (Class<R>) types[0];
@@ -56,7 +56,7 @@ public abstract class QResponseSubscriber<R> extends QSubscriber<Response<String
                     if (code == 0) {
                         onSuccess(res);
                     } else {
-                        onThrowable(new QCodeException(code, msg));
+                        onThrowable(new MCodeException(code, msg));
                     }
                 }
             } catch (JSONException e) {

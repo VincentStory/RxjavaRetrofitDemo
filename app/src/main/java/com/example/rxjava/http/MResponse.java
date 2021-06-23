@@ -2,7 +2,7 @@ package com.example.rxjava.http;
 
 import com.google.gson.annotations.SerializedName;
 
-public class QResponse<T> {
+public class MResponse<T> {
     private int code;
     private String message;
     @SerializedName("currentTime")

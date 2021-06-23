@@ -30,7 +30,7 @@ import java.util.regex.Pattern;
 
 
 
-public class QTThreadRunner implements Callback, IThreadRunner {
+public class MThreadRunner implements Callback, IThreadRunner {
     private final static String LOG_TAG = "TaskRunner";
 
     //group 管理信息
@@ -40,7 +40,7 @@ public class QTThreadRunner implements Callback, IThreadRunner {
     //等待执行的任务优先级队列
     private Queue<Task> mAllWaitingTasks = new PriorityQueue<Task>(10, new TaskComparator());
 
-    private static QTThreadRunner sTaskHolder;
+    private static MThreadRunner sTaskHolder;
     //线程池
     private ScheduledExecutorService mThreadPool;
 
@@ -52,7 +52,7 @@ public class QTThreadRunner implements Callback, IThreadRunner {
 
     private int coresNum;
 
-    protected QTThreadRunner() {
+    protected MThreadRunner() {
         int coreNum = getNumCores();
         if (coreNum == 0) {
             coreNum = 2;
@@ -71,9 +71,9 @@ public class QTThreadRunner implements Callback, IThreadRunner {
         mMainHandler = new Handler(Looper.getMainLooper(), this);
     }
 
-    public static synchronized QTThreadRunner getInstance() {
+    public static synchronized MThreadRunner getInstance() {
         if (sTaskHolder == null)
-            sTaskHolder = new QTThreadRunner();
+            sTaskHolder = new MThreadRunner();
         return sTaskHolder;
     }
 

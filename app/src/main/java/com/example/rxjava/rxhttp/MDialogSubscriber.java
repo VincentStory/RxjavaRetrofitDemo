@@ -16,7 +16,7 @@ import retrofit2.Response;
  * date   : 2021/4/25 5:56 PM
  * desc   :
  */
-public abstract class QDialogSubscriber<R> extends QResponseSubscriber<R> {
+public abstract class MDialogSubscriber<R> extends MResponseSubscriber<R> {
 
 
     private ProgressDialog dialog;
@@ -24,16 +24,16 @@ public abstract class QDialogSubscriber<R> extends QResponseSubscriber<R> {
 
 
 
-    public QDialogSubscriber() {
+    public MDialogSubscriber() {
         initDialog(AppManager.getInstance().currentActivity());
     }
 
-    public QDialogSubscriber(Boolean isShowLoading) {
+    public MDialogSubscriber(Boolean isShowLoading) {
         this.isShowLoading = isShowLoading;
         initDialog(AppManager.getInstance().currentActivity());
     }
 
-    public QDialogSubscriber(Boolean isShowLoading, Boolean isResponseBean) {
+    public MDialogSubscriber(Boolean isShowLoading, Boolean isResponseBean) {
         this.isShowLoading = isShowLoading;
         this.isResponseBean = isResponseBean;
         initDialog(AppManager.getInstance().currentActivity());

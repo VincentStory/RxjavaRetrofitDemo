@@ -1,9 +1,9 @@
 package com.example.rxjava.http;
 
-public class QCodeException extends RuntimeException {
+public class MCodeException extends RuntimeException {
     private int code;
 
-    public QCodeException(int code, String message) {
+    public MCodeException(int code, String message) {
         super(message);
         this.code = code;
     }
