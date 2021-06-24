@@ -32,7 +32,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
  */
 public class HttpConnector {
 
-    private static boolean sDebug;
     private static final int TIME_OUT = 6;
 
 
@@ -77,42 +76,6 @@ public class HttpConnector {
                 .client(httpClient)
                 .build();
 
-    }
-
-    /**
-     * 获取网络库使用的OkHttpClient
-     */
-    public static OkHttpClient getHttpClient() {
-        return InstanceHolder.httpClient;
-    }
-
-    //获取这个SSLSocketFactory
-    private static SSLSocketFactory getSSLSocketFactory() {
-        try {
-            SSLContext sslContext = SSLContext.getInstance("SSL");
-            sslContext.init(null, getTrustManager(), new SecureRandom());
-            return sslContext.getSocketFactory();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-
-    //获取TrustManager
-    private static TrustManager[] getTrustManager() {
-        return new TrustManager[]{new X509TrustManager() {
-            @Override
-            public void checkClientTrusted(X509Certificate[] chain, String authType) {
-            }
-
-            @Override
-            public void checkServerTrusted(X509Certificate[] chain, String authType) {
-            }
-
-            @Override
-            public X509Certificate[] getAcceptedIssuers() {
-                return new X509Certificate[]{};
-            }
-        }};
     }
 
     //获取HostnameVerifier
