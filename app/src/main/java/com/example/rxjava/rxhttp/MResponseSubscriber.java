@@ -47,6 +47,7 @@ public abstract class MResponseSubscriber<R> extends MSubscriber<Response<String
                 } else {
                     //单独解析data数据¬
                     JSONObject jsonObject = new JSONObject(response.body());
+//                    根据项目的具体数据格式，这里可能需要做一定程度的修改，就是将实际接口返回的数据名称，替换下面的code，message，data。
                     int code = jsonObject.optInt("code");
                     String msg = jsonObject.optString("message");
 //                String currentTime = jsonObject.optString("currentTime");
